@@ -1,15 +1,20 @@
 "use server";
 
-import { db } from "../_lib/prisma";
 import { endOfDay, startOfDay } from "date-fns";
+import { db } from "../_lib/prisma";
 
-interface GetBookingParams {
+interface GetBookingsProps {
   serviceId: string;
   date: Date;
 }
 
-export const getBookings = ({ date }: GetBookingParams) => {
+export const getBookings = ({ date }: GetBookingsProps) => {
   return db.booking.findMany({
-    where: { date: { lte: endOfDay(date), gte: startOfDay(date) } },
+    where: {
+      date: {
+        lte: endOfDay(date),
+        gte: startOfDay(date),
+      },
+    },
   });
 };

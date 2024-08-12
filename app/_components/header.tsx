@@ -13,6 +13,7 @@ const Header = () => {
         <Link href="/">
           <Image alt="FSW Barber" src="/logo.png" height={18} width={120} />
         </Link>
+
         <Sheet>
           <SheetTrigger asChild>
             <Button size="icon" variant="outline">
